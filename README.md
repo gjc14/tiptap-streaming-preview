@@ -1,3 +1,27 @@
+# Tiptap Streaming Preview Extension
+
+> A compact demo of streaming `Markdown` from Google AI Gemini and save to Tiptap Extension demo
+
+## Packages
+
+- **Tiptap**
+- **React Markdown** - Rendering streaming
+- **MarkdownIt** - Render MD to HTML cater to Tiptap
+- **AI-SDK** - Streaming functionality
+- **Gemini** - Providing MD format response
+
+## Dataflow
+
+1. [Tiptap] Send prompt to Streaming Preview extension
+2. [StreamingPreview] Get prompt from attributes (node.attrs.prompt)
+3. [StreamingPreview] Call Gemini @ai/api/completions with ai-sdk
+4. [StreamingPreview] Rendering completion stream
+5. [StreamingPreview] Choosing to discard or save the response
+6. [StreamingPreview] Transform data and execute editor's api (commands)
+7. [Tiptap] Tiptap get's `HTML` and automatically transform it to visible format
+
+---
+
 # Welcome to Remix!
 
 - 📖 [Remix docs](https://remix.run/docs)

@@ -11,6 +11,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@ai-sdk/google": "^0.0.54",
     "@remix-run/node": "^2.13.1",
     "@remix-run/react": "^2.13.1",
     "@remix-run/serve": "^2.13.1",
@@ -18,6 +19,7 @@
     "@tiptap/starter-kit": "^2.9.1",
     "ai": "^3.4.20",
     "isbot": "^4.1.0",
+    "markdown-it": "^14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^9.0.1",

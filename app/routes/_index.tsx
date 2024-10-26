@@ -34,11 +34,11 @@ Did you see that? That’s a React component. We are really living in the future
       <div className="flex gap-3">
         <Button
           onClick={() => {
-            // Insert using default tiptap
+            // Prompt using default tiptap
             editor?.commands.insertContent({
               type: "streamingPreview",
               attrs: {
-                prompt: "Tell me a joke",
+                prompt: "Tell me why claude is good?",
               },
             });
           }}
@@ -49,9 +49,9 @@ Did you see that? That’s a React component. We are really living in the future
         <button
           className="hover:underline"
           onClick={() => {
-            // Insert using customed command
+            // Prompt using customed command
             editor?.commands.setStreamingPreview({
-              prompt: "Tell me a joke",
+              prompt: "Tell me why claude is good?",
             });
           }}
         >

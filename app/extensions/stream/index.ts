@@ -2,6 +2,7 @@ import { mergeAttributes, Node, Command } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
 
 import Component from "./markdown-component";
+import MarkdownIt from "markdown-it";
 
 interface StreamingPreviewAttributes {
   prompt: string;
@@ -25,7 +26,7 @@ export default Node.create<StreamingPreviewAttributes>({
 
   group: "block",
 
-  atom: true,
+  atom: true, // Only one streaming preview node can exist in the editor
 
   addAttributes() {
     return {
@@ -55,21 +56,22 @@ export default Node.create<StreamingPreviewAttributes>({
 
       saveStreamingPreview:
         (pos: number, content: string): Command =>
-        ({ tr, editor, dispatch }) => {
-          if (dispatch) {
-            // First, we'll create a paragraph node with the content
-            const paragraph = editor.schema.nodes.paragraph.create(
-              null,
-              editor.schema.text(content)
-            );
+        ({ tr, editor }) => {
+          // Get the current streaming preview node
+          const node = tr.doc.nodeAt(pos);
+          if (!node) return false;
 
-            // Get the current streaming preview node
-            const node = tr.doc.nodeAt(pos);
-            if (!node) return false;
+          const md = new MarkdownIt();
+          const htmlContent = md.render(content);
 
-            // Replace the streaming preview node with the paragraph
-            tr.replaceWith(pos, pos + node.nodeSize, paragraph);
-          }
+          // Chain remove this streaming preview node and insert the converted html content
+          editor
+            .chain()
+            .focus()
+            .deleteRange({ from: pos, to: pos + node.nodeSize })
+            .insertContent(htmlContent)
+            .run();
+
           return true;
         },
 

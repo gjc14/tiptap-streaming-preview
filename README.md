@@ -1,6 +1,16 @@
 # Tiptap Streaming Preview Extension
 
+https://github.com/user-attachments/assets/9501edac-40f4-46fa-8e25-4d8c33b7e46c
+
+> [!NOTE]
 > A compact demo of streaming `Markdown` from Google AI Gemini and save to Tiptap Extension demo
+
+## Files
+
+- `/app/routes/_index.tsx` the main page
+- `/app/routes/api.ai.completions.ts` ai api
+- `/app/extensions/stream/index.ts` extension config
+- `/app/extensions/stream/markdown-component.tsx` handling ai call and streaming markdown
 
 ## Packages
 

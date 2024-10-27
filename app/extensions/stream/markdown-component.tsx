@@ -34,10 +34,8 @@ export default (props: NodeViewProps) => {
   const handleSave = () => {
     if (!editor) return;
 
-    const pos = getPos();
-
     // Save the streaming content as regular text
-    editor.commands.saveStreamingPreview(pos, completion);
+    editor.commands.saveStreamingPreview(completion);
   };
 
   const handleDiscard = () => {

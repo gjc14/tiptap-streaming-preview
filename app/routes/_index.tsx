@@ -52,6 +52,8 @@ Did you see that? That’s a React component. We are really living in the future
             // Prompt using customed command
             editor?.commands.setStreamingPreview({
               prompt: "Tell me why claude is good?",
+              provider: "gemini-1.5-flash-latest",
+              status: "loading",
             });
           }}
         >
